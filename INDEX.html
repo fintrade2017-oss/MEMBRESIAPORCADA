@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desarrollo Comercialización Membresías — Isla La Porcada</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-deep:#0c1410;
+  --bg-soft:#13201a;
+  --bg-card:#172721;
+  --bg-card-2:#1d3028;
+  --ivory:#f5f0e1;
+  --ivory-soft:#e8e1cf;
+  --gold:#c9a35a;
+  --gold-bright:#e3c178;
+  --emerald:#3b6b54;
+  --emerald-deep:#234034;
+  --line:#2c4035;
+  --muted:#9aa89c;
+  --danger:#c45a4a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg-deep);
+  color:var(--ivory);
+  line-height:1.7;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+/* === HEADER === */
+.topbar{
+  position:sticky;top:0;z-index:100;
+  background:rgba(12,20,16,.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+  padding:14px 28px;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:14px;
+}
+.topbar-left{display:flex;align-items:center;gap:18px}
+.topbar-logo{height:46px;width:auto;object-fit:contain}
+.brand-mini{font-family:'Playfair Display',serif;font-size:14px;letter-spacing:.18em;color:var(--gold-bright);text-transform:uppercase}
+.brand-mini small{display:block;font-family:'Inter';font-size:10px;letter-spacing:.3em;color:var(--muted);margin-top:2px}
+.lang-switch{
+  display:flex;align-items:center;gap:8px;
+  background:var(--bg-card);
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:5px;
+}
+.lang-switch button{
+  background:transparent;border:none;cursor:pointer;
+  color:var(--muted);
+  font-family:'Inter';font-weight:600;font-size:12px;letter-spacing:.1em;
+  padding:7px 16px;border-radius:999px;
+  transition:all .3s ease;
+}
+.lang-switch button.active{background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:#0c1410}
+.lang-switch button:hover:not(.active){color:var(--ivory)}
+
+/* === HERO === */
+.hero{
+  position:relative;
+  min-height:78vh;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;
+  padding:80px 24px;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:url('images/ECORESORT.PNG') center/cover no-repeat;
+  opacity:.32;
+  filter:grayscale(.2) brightness(.7);
+}
+.hero-bg::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(12,20,16,.55) 0%,rgba(12,20,16,.85) 100%);
+}
+.hero-inner{position:relative;z-index:2;max-width:1100px}
+.hero-eyebrow{
+  font-family:'Inter';font-size:12px;letter-spacing:.45em;
+  color:var(--gold-bright);text-transform:uppercase;margin-bottom:28px;
+}
+.hero-title{
+  font-family:'Playfair Display',serif;
+  font-weight:700;
+  font-size:clamp(38px,6vw,76px);
+  line-height:1.05;
+  letter-spacing:-.01em;
+  color:var(--ivory);
+  margin-bottom:18px;
+}
+.hero-title span{color:var(--gold-bright);font-style:italic;font-weight:500}
+.hero-sub{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(18px,2vw,24px);
+  font-style:italic;
+  color:var(--ivory-soft);
+  margin-bottom:32px;
+  max-width:780px;margin-left:auto;margin-right:auto;
+}
+.hero-meta{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:24px;
+  font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+  margin-top:36px;
+}
+.hero-meta span{display:flex;align-items:center;gap:8px}
+.hero-meta span::before{content:"";width:6px;height:6px;background:var(--gold);border-radius:50%}
+
+/* === CONTAINER === */
+.container{max-width:1080px;margin:0 auto;padding:0 24px}
+section{padding:72px 0;border-top:1px solid var(--line)}
+section:first-of-type{border-top:none}
+
+.section-eyebrow{
+  font-family:'Inter';font-size:11px;letter-spacing:.4em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:14px;font-weight:600;
+}
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(28px,3.6vw,44px);
+  font-weight:600;
+  color:var(--ivory);
+  margin-bottom:12px;
+  letter-spacing:-.005em;
+}
+.section-title .num{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
+  color:var(--gold-bright);font-size:.7em;margin-right:14px;
+}
+.section-lead{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-size:20px;
+  color:var(--ivory-soft);
+  margin-bottom:36px;
+  max-width:780px;
+}
+
+p{margin-bottom:18px;color:var(--ivory-soft)}
+p strong{color:var(--ivory)}
+.lead-para{font-size:18px;color:var(--ivory)}
+
+h3{
+  font-family:'Playfair Display',serif;
+  font-size:24px;font-weight:600;
+  color:var(--gold-bright);
+  margin:36px 0 14px;
+}
+h4{
+  font-family:'Inter';font-size:15px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.16em;
+  color:var(--ivory);
+  margin:28px 0 12px;
+}
+
+ul,ol{margin:0 0 24px 24px;color:var(--ivory-soft)}
+ul li,ol li{margin-bottom:10px;padding-left:8px}
+ul li::marker{color:var(--gold)}
+ol li::marker{color:var(--gold);font-weight:700}
+
+/* === CARDS === */
+.card{
+  background:linear-gradient(180deg,var(--bg-card),var(--bg-card-2));
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:32px;
+  margin:24px 0;
+  position:relative;
+  overflow:hidden;
+}
+.card::before{
+  content:"";position:absolute;top:0;left:0;width:3px;height:100%;
+  background:linear-gradient(180deg,var(--gold),transparent);
+}
+.card h3{margin-top:0}
+
+/* === STAT GRID === */
+.stat-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:18px;
+  margin:32px 0;
+}
+.stat{
+  background:var(--bg-card);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:24px;
+  text-align:center;
+  transition:transform .3s ease,border-color .3s ease;
+}
+.stat:hover{transform:translateY(-3px);border-color:var(--gold)}
+.stat-num{
+  font-family:'Playfair Display',serif;
+  font-size:34px;font-weight:700;
+  color:var(--gold-bright);
+  line-height:1;
+  margin-bottom:8px;
+}
+.stat-label{
+  font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;
+}
+
+/* === TABLE === */
+.table-wrap{
+  overflow-x:auto;
+  border:1px solid var(--line);
+  border-radius:12px;
+  margin:28px 0;
+}
+table{
+  width:100%;border-collapse:collapse;
+  font-size:14px;
+}
+thead{
+  background:linear-gradient(180deg,var(--emerald-deep),#1a2a22);
+}
+th{
+  padding:18px 20px;
+  text-align:left;
+  font-family:'Inter';font-weight:600;font-size:12px;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold-bright);
+  border-bottom:1px solid var(--line);
+}
+td{
+  padding:16px 20px;
+  border-bottom:1px solid var(--line);
+  color:var(--ivory-soft);
+  vertical-align:top;
+}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(201,163,90,.04)}
+td strong{color:var(--ivory);font-weight:600}
+.td-money{color:var(--gold-bright);font-weight:600;font-variant-numeric:tabular-nums}
+
+/* === DIAGRAM === */
+.diagram{
+  background:#0a120d;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:36px 24px;
+  margin:32px 0;
+  overflow-x:auto;
+  font-family:'Courier New',monospace;
+  font-size:13px;
+  line-height:1.4;
+  color:var(--gold-bright);
+  white-space:pre;
+  text-align:center;
+}
+.diagram-label{
+  font-family:'Inter';font-size:11px;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--muted);
+  margin-bottom:20px;text-align:center;
+}
+
+/* === FORMULA === */
+.formula{
+  background:linear-gradient(135deg,#1a2a22,#0f1a14);
+  border:1px solid var(--gold);
+  border-radius:12px;
+  padding:28px 32px;
+  margin:28px 0;
+  text-align:center;
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;
+  color:var(--ivory);
+  font-style:italic;
+}
+.formula .result{
+  display:block;margin-top:14px;
+  font-family:'Playfair Display',serif;font-style:normal;
+  font-size:30px;font-weight:700;
+  color:var(--gold-bright);
+}
+
+/* === CALLOUT === */
+.callout{
+  border-left:3px solid var(--gold);
+  background:rgba(201,163,90,.06);
+  padding:22px 28px;
+  margin:28px 0;
+  border-radius:0 12px 12px 0;
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:19px;
+  color:var(--ivory);
+}
+.callout strong{font-style:normal;color:var(--gold-bright);font-weight:600}
+
+/* === IMG BLOCK === */
+.img-block{
+  margin:36px 0;
+  border-radius:14px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:var(--bg-card);
+}
+.img-block img{display:block;width:100%;height:auto}
+.img-caption{
+  padding:18px 24px;
+  font-size:13px;color:var(--muted);
+  font-style:italic;
+  border-top:1px solid var(--line);
+}
+.img-caption strong{color:var(--gold-bright);font-style:normal;letter-spacing:.1em;text-transform:uppercase;font-size:11px;display:block;margin-bottom:6px}
+
+/* === TWO COLUMN === */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin:32px 0}
+@media(max-width:780px){.two-col{grid-template-columns:1fr}}
+
+/* === PROFILE BARS === */
+.profile-bars{margin:28px 0}
+.profile-bar{
+  display:grid;grid-template-columns:200px 1fr 90px;
+  align-items:center;gap:18px;
+  padding:18px 0;border-bottom:1px solid var(--line);
+}
+.profile-bar:last-child{border-bottom:none}
+.profile-bar .label{font-family:'Inter';font-weight:600;font-size:13px;color:var(--ivory)}
+.profile-bar .bar{height:14px;background:var(--bg-card);border-radius:7px;overflow:hidden;border:1px solid var(--line)}
+.profile-bar .fill{height:100%;background:linear-gradient(90deg,var(--emerald),var(--gold));border-radius:7px}
+.profile-bar .pct{font-family:'Playfair Display';font-size:20px;color:var(--gold-bright);font-weight:700;text-align:right}
+
+/* === LEGAL BOX === */
+.legal-box{
+  background:linear-gradient(180deg,#0f1a14,#13201a);
+  border:1px solid var(--emerald);
+  border-radius:12px;
+  padding:28px 32px;
+  margin:28px 0;
+}
+.legal-box h4{color:var(--gold-bright);margin-top:0}
+.legal-box p:last-child{margin-bottom:0}
+.legal-tag{
+  display:inline-block;
+  background:var(--emerald-deep);
+  color:var(--gold-bright);
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  padding:4px 12px;border-radius:4px;margin-bottom:14px;font-weight:600;
+}
+
+/* === TOC === */
+.toc{
+  background:var(--bg-card);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:32px 36px;
+  margin:40px 0;
+}
+.toc h3{margin-top:0;color:var(--gold-bright);font-size:18px;letter-spacing:.18em;text-transform:uppercase}
+.toc ol{margin:0;list-style:none;counter-reset:toc}
+.toc li{
+  counter-increment:toc;
+  padding:10px 0;border-bottom:1px dashed var(--line);
+  display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+}
+.toc li:last-child{border-bottom:none}
+.toc li::before{
+  content:counter(toc,decimal-leading-zero);
+  font-family:'Playfair Display';color:var(--gold);font-weight:700;margin-right:14px;
+}
+.toc a{color:var(--ivory-soft);text-decoration:none;flex:1;transition:color .2s}
+.toc a:hover{color:var(--gold-bright)}
+.toc .pg{color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums}
+
+/* === FOOTER === */
+footer{
+  background:linear-gradient(180deg,#0a120d,#050a07);
+  border-top:1px solid var(--gold);
+  padding:60px 24px 30px;
+  text-align:center;
+}
+.footer-logo{height:60px;margin-bottom:18px}
+.footer-brand{
+  font-family:'Playfair Display',serif;
+  font-size:18px;color:var(--gold-bright);letter-spacing:.2em;text-transform:uppercase;
+  margin-bottom:8px;
+}
+.footer-copy{
+  font-size:12px;color:var(--muted);letter-spacing:.12em;
+  max-width:680px;margin:0 auto;line-height:1.6;
+}
+.footer-copy strong{color:var(--ivory)}
+
+@media(max-width:680px){
+  .topbar{padding:12px 16px}
+  .topbar-logo{height:36px}
+  .hero{min-height:60vh;padding:50px 18px}
+  .container{padding:0 16px}
+  section{padding:50px 0}
+  .card{padding:22px}
+  .stat-grid{grid-template-columns:1fr 1fr}
+  .profile-bar{grid-template-columns:1fr;gap:6px}
+  .profile-bar .pct{text-align:left}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ TOP BAR ============ -->
+<header class="topbar">
+  <div class="topbar-left">
+    <img src="images/LOGO.PNG" alt="La Porcada Logo" class="topbar-logo" onerror="this.style.display='none'">
+    <div class="brand-mini">
+      Isla La Porcada
+      <small>EcoResort &middot; Private Conclave</small>
+    </div>
+  </div>
+  <div class="lang-switch" role="group" aria-label="Language switcher">
+    <button id="btn-es" class="active" type="button" onclick="setLang('es')">ESPAÑOL</button>
+    <button id="btn-en" type="button" onclick="setLang('en')">ENGLISH</button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" style="border-top:none;padding-top:0;padding-bottom:0;">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow" data-es="Memorándum Jurídico-Estructural" data-en="Legal & Structural Memorandum">Memorándum Jurídico-Estructural</div>
+    <h1 class="hero-title" data-es="Desarrollo &amp; Comercialización de <span>Membresías</span>" data-en="Membership <span>Development</span> &amp; Commercialization">Desarrollo &amp; Comercialización de <span>Membresías</span></h1>
+    <p class="hero-sub" data-es="Programa Unificado de Membresías Executives — Isla La Porcada, República de Panamá" data-en="Unified Executive Membership Program — Isla La Porcada, Republic of Panama">Programa Unificado de Membresías Executives — Isla La Porcada, República de Panamá</p>
+    <div class="hero-meta">
+      <span data-es="Estructuración Legal Definitiva" data-en="Final Legal Structuring">Estructuración Legal Definitiva</span>
+      <span data-es="3 de noviembre de 2026" data-en="November 3, 2026">3 de noviembre de 2026</span>
+      <span data-es="República de Panamá" data-en="Republic of Panama">República de Panamá</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MEMO HEAD ============ -->
+<section>
+  <div class="container">
+    <div class="section-eyebrow" data-es="Documento Interno · Confidencial" data-en="Internal Document · Confidential">Documento Interno · Confidencial</div>
+    <h2 class="section-title"><span class="num">00.</span><span data-es="Encabezado del Memorándum" data-en="Memorandum Header">Encabezado del Memorándum</span></h2>
+
+    <div class="card">
+      <table style="width:100%;border:none;font-size:15px">
+        <tr><td style="border:none;color:var(--gold-bright);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:12px;padding:6px 0;width:120px" data-es="PARA:" data-en="TO:">PARA:</td><td style="border:none;padding:6px 0" data-es="Consejo de Administración / Gerencia General" data-en="Board of Directors / General Management">Consejo de Administración / Gerencia General</td></tr>
+        <tr><td style="border:none;color:var(--gold-bright);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:12px;padding:6px 0" data-es="DE:" data-en="FROM:">DE:</td><td style="border:none;padding:6px 0" data-es="Dirección Estratégica y Jurídica — Isla La Porcada" data-en="Strategic & Legal Office — Isla La Porcada">Dirección Estratégica y Jurídica — Isla La Porcada</td></tr>
+        <tr><td style="border:none;color:var(--gold-bright);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:12px;padding:6px 0" data-es="ASUNTO:" data-en="RE:">ASUNTO:</td><td style="border:none;padding:6px 0" data-es="Estructuración Legal Definitiva del Programa de Membresías Unificadas ($250k Inscripción / $50k Mantenimiento), Canal Institucional (Banqueros Privados &amp; Family Offices) y Modelo Operativo de Ocupación" data-en="Final Legal Structuring of the Unified Membership Program ($250k Initiation / $50k Annual Dues), Institutional Channel (Private Bankers &amp; Family Offices) and Operational Occupancy Model">Estructuración Legal Definitiva del Programa de Membresías Unificadas ($250k Inscripción / $50k Mantenimiento), Canal Institucional (Banqueros Privados &amp; Family Offices) y Modelo Operativo de Ocupación</td></tr>
+        <tr><td style="border:none;color:var(--gold-bright);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:12px;padding:6px 0" data-es="FECHA:" data-en="DATE:">FECHA:</td><td style="border:none;padding:6px 0" data-es="3 de noviembre de 2026" data-en="November 3, 2026">3 de noviembre de 2026</td></tr>
+        <tr><td style="border:none;color:var(--gold-bright);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:12px;padding:6px 0" data-es="JURISDICCIÓN:" data-en="JURISDICTION:">JURISDICCIÓN:</td><td style="border:none;padding:6px 0" data-es="República de Panamá — Leyes 1/1997, 32/1927, 23/2015, 47/2013 y Acuerdos SBP" data-en="Republic of Panama — Laws 1/1997, 32/1927, 23/2015, 47/2013 and SBP Agreements">República de Panamá — Leyes 1/1997, 32/1927, 23/2015, 47/2013 y Acuerdos SBP</td></tr>
+      </table>
+    </div>
+
+    <div class="toc">
+      <h3 data-es="Índice del Documento" data-en="Table of Contents">Índice del Documento</h3>
+      <ol>
+        <li><a href="#s1" data-es="Resumen Ejecutivo y Modelo Definitivo" data-en="Executive Summary & Final Model">Resumen Ejecutivo y Modelo Definitivo</a><span class="pg">01</span></li>
+        <li><a href="#s2" data-es="Arquitectura Jurídica de la Membresía Unificada" data-en="Legal Architecture of the Unified Membership">Arquitectura Jurídica de la Membresía Unificada</a><span class="pg">02</span></li>
+        <li><a href="#s3" data-es="Instrumentación del Canal de Banca Privada y Family Offices" data-en="Private Banking & Family Office Channel">Instrumentación del Canal de Banca Privada y Family Offices</a><span class="pg">03</span></li>
+        <li><a href="#s4" data-es="Análisis de Capacidad y Matriz de Ocupación" data-en="Capacity Analysis & Occupancy Matrix">Análisis de Capacidad y Matriz de Ocupación</a><span class="pg">04</span></li>
+        <li><a href="#s5" data-es="Cuadro Consolidado de Viabilidad" data-en="Consolidated Feasibility Statement">Cuadro Consolidado de Viabilidad</a><span class="pg">05</span></li>
+        <li><a href="#s6" data-es="Marco Legal Panameño Aplicable" data-en="Panamanian Legal Framework">Marco Legal Panameño Aplicable</a><span class="pg">06</span></li>
+        <li><a href="#s7" data-es="Conclusión y Próximos Pasos" data-en="Conclusion & Next Steps">Conclusión y Próximos Pasos</a><span class="pg">07</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 1. RESUMEN EJECUTIVO ============ -->
+<section id="s1">
+  <div class="container">
+    <div class="section-eyebrow" data-es="Sección 01" data-en="Section 01">Sección 01</div>
+    <h2 class="section-title"><span class="num">01.</span><span data-es="Resumen Ejecutivo y Modelo Definitivo" data-en="Executive Summary & Final Model">Resumen Ejecutivo y Modelo Definitivo</span></h2>
+    <p class="section-lead" data-es="Tras la optimización estratégica del Plan Director, se elimina definitivamente cualquier modalidad de membresía masiva o de acceso diurno, unificando la oferta global de acceso a la isla en un único Título de Alta Exclusividad." data-en="Following strategic optimization of the Master Plan, any modality of mass membership or daytime access is definitively eliminated, unifying the global access offering to the island into a single High-Exclusivity Title.">Tras la optimización estratégica del Plan Director, se elimina definitivamente cualquier modalidad de membresía masiva o de acceso diurno, unificando la oferta global de acceso a la isla en un único Título de Alta Exclusividad.</p>
+
+    <h3 data-es="Parámetros Clave del Modelo Unificado" data-en="Key Parameters of the Unified Model">Parámetros Clave del Modelo Unificado</h3>
+
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="stat-num">5,000</div>
+        <div class="stat-label" data-es="Membresías Executives" data-en="Executive Memberships">Membresías Executives</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">$250K</div>
+        <div class="stat-label" data-es="Inscripción (pago único)" data-en="Initiation Fee (one-time)">Inscripción (pago único)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">$50K</div>
+        <div class="stat-label" data-es="Mantenimiento anual / socio" data-en="Annual Dues / member">Mantenimiento anual / socio</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">$1,000M</div>
+        <div class="stat-label" data-es="Caja neta Fase 0" data-en="Net cash Phase 0">Caja neta Fase 0</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">$250M</div>
+        <div class="stat-label" data-es="Ingreso recurrente / año" data-en="Recurring revenue / year">Ingreso recurrente / año</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">365</div>
+        <div class="stat-label" data-es="Días de ocupación plena" data-en="Days of full occupancy">Días de ocupación plena</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-top:0" data-es="Definición Operativa del Modelo" data-en="Operational Definition of the Model">Definición Operativa del Modelo</h3>
+      <ul>
+        <li data-es="<strong>Cupo Máximo Cerrado:</strong> 5,000 Membresías Executives (numeradas e inalienables en mercado secundario abierto)." data-en="<strong>Closed Maximum Cap:</strong> 5,000 Executive Memberships (numbered and non-transferable on an open secondary market)."><strong>Cupo Máximo Cerrado:</strong> 5,000 Membresías Executives (numeradas e inalienables en mercado secundario abierto).</li>
+        <li data-es="<strong>Derecho de Inscripción (Initiation / Access Fee):</strong> $250,000 USD (pago único inicial)." data-en="<strong>Initiation / Access Fee:</strong> $250,000 USD (one-time initial payment)."><strong>Derecho de Inscripción (Initiation / Access Fee):</strong> $250,000 USD (pago único inicial).</li>
+        <li data-es="<strong>Ingreso Neto para la Promotora:</strong> $200,000 USD por título emitido." data-en="<strong>Net Revenue to Promoter:</strong> $200,000 USD per issued title."><strong>Ingreso Neto para la Promotora:</strong> $200,000 USD por título emitido.</li>
+        <li data-es="<strong>Honorario de Asesoramiento / Canal (Banqueros Privados &amp; Family Offices):</strong> $50,000 USD por título colocado para el banquero privado o family office." data-en="<strong>Advisory / Channel Fee (Private Bankers &amp; Family Offices):</strong> $50,000 USD per placed title for the private banker or family office."><strong>Honorario de Asesoramiento / Canal (Banqueros Privados &amp; Family Offices):</strong> $50,000 USD por título colocado para el banquero privado o family office.</li>
+        <li data-es="<strong>Cuota Anual de Mantenimiento (Annual Dues):</strong> $50,000 USD/año por socio." data-en="<strong>Annual Dues:</strong> $50,000 USD/year per member."><strong>Cuota Anual de Mantenimiento (Annual Dues):</strong> $50,000 USD/año por socio.</li>
+        <li data-es="<strong>Recaudación Neta de Caja (Fase 0):</strong> $1,000,000,000 USD netos ($1,000 M USD) por concepto de emisión de títulos, superando holgadamente el CAPEX de desarrollo ($739.74 M USD)." data-en="<strong>Net Cash Raised (Phase 0):</strong> $1,000,000,000 USD net ($1,000 M USD) from title issuance, comfortably exceeding the development CAPEX ($739.74 M USD)."><strong>Recaudación Neta de Caja (Fase 0):</strong> $1,000,000,000 USD netos ($1,000 M USD) por concepto de emisión de títulos, superando holgadamente el CAPEX de desarrollo ($739.74 M USD).</li>
+        <li data-es="<strong>Ingreso Recurrente Anual:</strong> $250,000,000 USD/año ($250 M USD/año) destinados al sostenimiento operativo, la seguridad de rango presidencial y el mantenimiento insular." data-en="<strong>Annual Recurring Revenue:</strong> $250,000,000 USD/year ($250 M USD/year) allocated to operational sustainability, presidential-grade security and island maintenance."><strong>Ingreso Recurrente Anual:</strong> $250,000,000 USD/año ($250 M USD/año) destinados al sostenimiento operativo, la seguridad de rango presidencial y el mantenimiento insular.</li>
+      </ul>
+    </div>
+
+    <div class="callout" data-es="<strong>Tesis estructural:</strong> la isla deja de ser un producto inmobiliario o turístico convencional y se constituye como un <em>club privado de conclave internacional</em>, financiado por una emisión cerrada de títulos onerosos, regido por la legislación societaria y fiduciaria de la República de Panamá." data-en="<strong>Structural thesis:</strong> the island ceases to be a conventional real estate or tourism product and is constituted as a <em>private international conclave club</em>, financed by a closed issuance of onerous titles, governed by Panamanian corporate and trust legislation."><strong>Tesis estructural:</strong> la isla deja de ser un producto inmobiliario o turístico convencional y se constituye como un <em>club privado de conclave internacional</em>, financiado por una emisión cerrada de títulos onerosos, regido por la legislación societaria y fiduciaria de la República de Panamá.</div>
+  </div>
+</section>
+
+<!-- ============ 2. ARQUITECTURA JURÍDICA ============ -->
+<section id="s2">
+  <div class="container">
+    <div class="section-eyebrow" data-es="Sección 02" data-en="Section 02">Sección 02</div>
+    <h2 class="section-title"><span class="num">02.</span><span data-es="Arquitectura Jurídica de la Membresía Unificada ($250K)" data-en="Legal Architecture of the Unified Membership ($250K)">Arquitectura Jurídica de la Membresía Unificada ($250K)</span></h2>
+
+    <div class="diagram-label" data-es="Diagrama de Estructura Fiduciaria y Societaria" data-en="Trust & Corporate Structure Diagram">Diagrama de Estructura Fiduciaria y Societaria</div>
+<div class="diagram">┌────────────────────────────────────────┐
+│     Sociedad Activa / Fideicomiso      │
+│       (Club Isla La Porcada, S.A.)     │
+└───────────────────┬────────────────────┘
+                    │ Emite
+                    ▼
+┌────────────────────────────────────────┐
+│   TÍTULO PATRIMONIAL EXECUTIVE ($250k) │
+│  - Concesión nominativa e intransferible│
+│  - Obligatoriedad de Compliance / KYC  │
+│  - Recompra Corporativa (Buyback)      │
+│  - Estancias hoteleras sujetas a cobro │
+└────────────────────────────────────────┘</div>
+
+    <h3 data-es="A. Naturaleza del Título y Vehículo Emisor" data-en="A. Nature of the Title and Issuing Vehicle">A. Naturaleza del Título y Vehículo Emisor</h3>
+    <p data-es="<strong>Entidad Emisora:</strong> Los títulos son emitidos exclusivamente por el Club de Campo y Mar Isla La Porcada, S.A. (o un Fideicomiso de Administración e Inversión panameño), una entidad independiente de la propiedad del suelo y de la gestora hotelera (AMAN Resorts)." data-en="<strong>Issuing Entity:</strong> Titles are issued exclusively by Club de Campo y Mar Isla La Porcada, S.A. (or a Panamanian Administration and Investment Trust), an entity independent from the land ownership and the hotel operator (AMAN Resorts)."><strong>Entidad Emisora:</strong> Los títulos son emitidos exclusivamente por el Club de Campo y Mar Isla La Porcada, S.A. (o un Fideicomiso de Administración e Inversión panameño), una entidad independiente de la propiedad del suelo y de la gestora hotelera (AMAN Resorts).</p>
+    <p data-es="<strong>Naturaleza Contractual:</strong> El título se instrumenta bajo un &ldquo;Contrato de Asociación Onerosa a Club Privado e Instalaciones Complejo La Porcada&rdquo;." data-en="<strong>Contractual Nature:</strong> The title is executed under a &ldquo;Contract of Onerous Association to a Private Club and La Porcada Complex Facilities&rdquo;."><strong>Naturaleza Contractual:</strong> El título se instrumenta bajo un &ldquo;Contrato de Asociación Onerosa a Club Privado e Instalaciones Complejo La Porcada&rdquo;.</p>
+    <p data-es="<strong>Ausencia de Derechos Políticos o Inmobiliarios:</strong> El título otorga derecho de acceso preferente, prioridad de reserva y uso exclusivo de instalaciones, pero no concede acciones sobre el capital social de la promotora ni derechos reales de propiedad sobre la isla." data-en="<strong>Absence of Political or Real Estate Rights:</strong> The title grants preferential access, reservation priority and exclusive use of facilities, but conveys no shares in the promoter's capital stock and no real property rights over the island."><strong>Ausencia de Derechos Políticos o Inmobiliarios:</strong> El título otorga derecho de acceso preferente, prioridad de reserva y uso exclusivo de instalaciones, pero no concede acciones sobre el capital social de la promotora ni derechos reales de propiedad sobre la isla.</p>
+
+    <div class="legal-box">
+      <span class="legal-tag" data-es="Marco Legal Panameño" data-en="Panamanian Legal Framework">Marco Legal Panameño</span>
+      <h4 data-es="Fundamento normativo del vehículo emisor" data-en="Normative basis of the issuing vehicle">Fundamento normativo del vehículo emisor</h4>
+      <p data-es="La sociedad anónima panameña se constituye conforme a la <strong>Ley 32 de 1927 sobre Sociedades Anónimas</strong>, que permite la creación de entidades con fines lícitos diversos, incluyendo la administración de clubes privados y la titularidad de derechos de uso sobre activos muebles e inmuebles. Esta ley exige (i) un agente residente en Panamá (art. 2), (ii) un capital social autorizado libremente determinable en cualquier moneda, (iii) junta directiva con mínimo tres directores, y (iv) inscripción en el Registro Público de Panamá." data-en="The Panamanian corporation is constituted under <strong>Law 32 of 1927 on Corporations</strong>, which allows the creation of entities for diverse lawful purposes, including the administration of private clubs and the holding of use rights over movable and immovable assets. This law requires (i) a resident agent in Panama (art. 2), (ii) authorized capital stock freely denominated in any currency, (iii) a board of directors with at least three directors, and (iv) registration with the Public Registry of Panama.">La sociedad anónima panameña se constituye conforme a la <strong>Ley 32 de 1927 sobre Sociedades Anónimas</strong>, que permite la creación de entidades con fines lícitos diversos, incluyendo la administración de clubes privados y la titularidad de derechos de uso sobre activos muebles e inmuebles. Esta ley exige (i) un agente residente en Panamá (art. 2), (ii) un capital social autorizado libremente determinable en cualquier moneda, (iii) junta directiva con mínimo tres directores, y (iv) inscripción en el Registro Público de Panamá.</p>
+      <p data-es="Alternativamente, el fideicomiso panameño se rige por la <strong>Ley 1 de 5 de enero de 1997</strong>, que reconoce la figura del fideicomiso mercantil, permite la segregación patrimonial del fideicomitente y garantiza la inembargabilidad de los bienes fideicomitidos por obligaciones del constituyente (art. 11). El fiduciario debe estar sujeto al control y supervisión de la <strong>Superintendencia de Bancos de Panamá (SBP)</strong> cuando actúe como entidad fiduciaria autorizada (Decreto Ley 9 de 1998 y Acuerdo SBP 004-2008)." data-en="Alternatively, the Panamanian trust is governed by <strong>Law 1 of January 5, 1997</strong>, which recognizes the commercial trust figure, allows segregation of the trustor's assets and guarantees the unattachability of trust assets from the constitutor's obligations (art. 11). The trustee must be subject to the control and supervision of the <strong>Superintendence of Banks of Panama (SBP)</strong> when acting as an authorized fiduciary entity (Decree Law 9 of 1998 and SBP Agreement 004-2008).">Alternativamente, el fideicomiso panameño se rige por la <strong>Ley 1 de 5 de enero de 1997</strong>, que reconoce la figura del fideicomiso mercantil, permite la segregación patrimonial del fideicomitente y garantiza la inembargabilidad de los bienes fideicomitidos por obligaciones del constituyente (art. 11). El fiduciario debe estar sujeto al control y supervisión de la <strong>Superintendencia de Bancos de Panamá (SBP)</strong> cuando actúe como entidad fiduciaria autorizada (Decreto Ley 9 de 1998 y Acuerdo SBP 004-2008).</p>
+      <p data-es="La elección entre S.A. o fideicomiso dependerá de consideraciones de (a) privacidad patrimonial, (b) eficiencia en la recompra y reciclaje de títulos y (c) tratamiento fiscal. Recomendación inicial: <strong>estructura dual</strong> — S.A. emisora del título + fideicomiso de administración de los fondos recaudados, garantizando segregación patrimonial de los recursos de los socios." data-en="The choice between a corporation or a trust will depend on considerations of (a) asset privacy, (b) efficiency in title buyback and recycling, and (c) tax treatment. Initial recommendation: <strong>dual structure</strong> — corporation issuing the title + administration trust for the raised funds, ensuring asset segregation of members' resources.">La elección entre S.A. o fideicomiso dependerá de consideraciones de (a) privacidad patrimonial, (b) eficiencia en la recompra y reciclaje de títulos y (c) tratamiento fiscal. Recomendación inicial: <strong>estructura dual</strong> — S.A. emisora del título + fideicomiso de administración de los fondos recaudados, garantizando segregación patrimonial de los recursos de los socios.</p>
+    </div>
+
+    <h3 data-es="B. El Filtro de Admisión Innegociable (By Invitation Only)" data-en="B. The Non-Negotiable Admission Filter (By Invitation Only)">B. El Filtro de Admisión Innegociable (By Invitation Only)</h3>
+    <p data-es="<strong>El dinero no compra la entrada:</strong> Tener los $250,000 USD y capacidad para abonar los $50,000 USD anuales es una condición indispensable pero no suficiente." data-en="<strong>Money does not buy entry:</strong> Having the $250,000 USD and the capacity to pay the annual $50,000 USD is a necessary but not sufficient condition."><strong>El dinero no compra la entrada:</strong> Tener los $250,000 USD y capacidad para abonar los $50,000 USD anuales es una condición indispensable pero no suficiente.</p>
+    <p data-es="<strong>Compliance y Background Check:</strong> Todo solicitante introducido por la banca privada debe someterse a un riguroso examen de idoneidad reputacional, legal y financiera gestionado por una firma de seguridad global. El Comité de Admisión del Club mantiene el derecho de veto absoluto y reservado sin necesidad de justificación." data-en="<strong>Compliance & Background Check:</strong> Every applicant introduced by private banking must undergo a rigorous reputational, legal and financial suitability examination managed by a global security firm. The Club's Admissions Committee retains the absolute and reserved right of veto without justification."><strong>Compliance y Background Check:</strong> Todo solicitante introducido por la banca privada debe someterse a un riguroso examen de idoneidad reputacional, legal y financiera gestionado por una firma de seguridad global. El Comité de Admisión del Club mantiene el derecho de veto absoluto y reservado sin necesidad de justificación.</p>
+
+    <div class="legal-box">
+      <span class="legal-tag" data-es="Cumplimiento Normativo" data-en="Regulatory Compliance">Cumplimiento Normativo</span>
+      <h4 data-es="Debida Diligencia y Prevención de Lavado de Capitales" data-en="Due Diligence & Anti-Money Laundering">Debida Diligencia y Prevención de Lavado de Capitales</h4>
+      <p data-es="El proceso de admisión cumple con la <strong>Ley 23 de 27 de abril de 2015</strong>, que adopta medidas para prevenir el blanqueo de capitales, el financiamiento del terrorismo y la proliferación de armas de destrucción masiva, y su Decreto Ejecutivo reglamentario N° 52 de 2015. Estas normas obligan a los sujetos obligados —incluyendo fiduciarias, abogados y sociedades estructuradoras— a aplicar medidas de <strong>Cliente Due Diligence (CDD)</strong> y <strong>Enhanced Due Diligence (EDD)</strong> para personas expuestas políticamente (PEP) y operaciones de alto riesgo." data-en="The admission process complies with <strong>Law 23 of April 27, 2015</strong>, which adopts measures to prevent money laundering, terrorism financing and the proliferation of weapons of mass destruction, and its Executive Decree No. 52 of 2015. These rules require obligated subjects —including fiduciaries, lawyers and structuring firms— to apply <strong>Customer Due Diligence (CDD)</strong> and <strong>Enhanced Due Diligence (EDD)</strong> measures for politically exposed persons (PEP) and high-risk operations.">El proceso de admisión cumple con la <strong>Ley 23 de 27 de abril de 2015</strong>, que adopta medidas para prevenir el blanqueo de capitales, el financiamiento del terrorismo y la proliferación de armas de destrucción masiva, y su Decreto Ejecutivo reglamentario N° 52 de 2015. Estas normas obligan a los sujetos obligados —incluyendo fiduciarias, abogados y sociedades estructuradoras— a aplicar medidas de <strong>Cliente Due Diligence (CDD)</strong> y <strong>Enhanced Due Diligence (EDD)</strong> para personas expuestas políticamente (PEP) y operaciones de alto riesgo.</p>
+      <p data-es="Adicionalmente, la <strong>Ley 47 de 2013</strong> creó la <strong>Unidad de Análisis Financiero (UAF)</strong>, receptora de los Reportes de Operaciones Sospechosas (ROS). La emisora mantendrá un Oficial de Cumplimiento designado conforme al art. 6 de la Ley 23 y un Manual de Prevención actualizado, archivando los expedientes KYC por un mínimo de <strong>diez (10) años</strong> tras la terminación de la relación con el socio." data-en="Additionally, <strong>Law 47 of 2013</strong> created the <strong>Financial Analysis Unit (UAF)</strong>, recipient of Suspicious Operation Reports (SOR). The issuer will maintain a Compliance Officer designated under art. 6 of Law 23 and an updated Prevention Manual, archiving KYC files for a minimum of <strong>ten (10) years</strong> after termination of the member relationship.">Adicionalmente, la <strong>Ley 47 de 2013</strong> creó la <strong>Unidad de Análisis Financiero (UAF)</strong>, receptora de los Reportes de Operaciones Sospechosas (ROS). La emisora mantendrá un Oficial de Cumplimiento designado conforme al art. 6 de la Ley 23 y un Manual de Prevención actualizado, archivando los expedientes KYC por un mínimo de <strong>diez (10) años</strong> tras la terminación de la relación con el socio.</p>
+    </div>
+
+    <h3 data-es="C. Régimen Operativo de Pernoctación y Pago por Uso" data-en="C. Operating Regime of Stay and Pay-per-Use">C. Régimen Operativo de Pernoctación y Pago por Uso</h3>
+    <p data-es="<strong>Las estancias no son gratuitas.</strong> El pago de los $250,000 USD otorga la condición de socio, el acceso blindado y la máxima prioridad en ventanas de reserva. Sin embargo, todas las estancias (suites, villas overwater y condominios de playa), servicios del centro de longevidad, gastronomía y consumos de marina se facturan y cobran íntegramente al socio en cada visita según las tarifas del operador hotelero (AMAN). Esto preserva el RevPAR y los flujos de explotación del resort." data-en="<strong>Stays are not free.</strong> Payment of the $250,000 USD grants membership status, shielded access and maximum reservation priority. However, all stays (suites, overwater villas and beach condominiums), longevity center services, gastronomy and marina consumption are fully billed and charged to the member on each visit at the hotel operator's (AMAN) rates. This preserves RevPAR and resort exploitation flows."><strong>Las estancias no son gratuitas.</strong> El pago de los $250,000 USD otorga la condición de socio, el acceso blindado y la máxima prioridad en ventanas de reserva. Sin embargo, todas las estancias (suites, villas overwater y condominios de playa), servicios del centro de longevidad, gastronomía y consumos de marina se facturan y cobran íntegramente al socio en cada visita según las tarifas del operador hotelero (AMAN). Esto preserva el RevPAR y los flujos de explotación del resort.</p>
+
+    <div class="img-block">
+      <img src="images/MEM1.PNG" alt="Membresía Executive — Isla La Porcada" onerror="this.parentNode.innerHTML='<div style=\'padding:80px 24px;text-align:center;color:var(--muted);font-family:Cormorant Garamond,serif;font-style:italic;font-size:18px\'>[ Imagen MEM1.PNG — Membresía Executive ]</div>'">
+      <div class="img-caption">
+        <strong data-es="Título Patrimonial Executive" data-en="Executive Patrimonial Title">Título Patrimonial Executive</strong>
+        <span data-es="Render referencial de la membresía numerada, nominativa e intransferible. Documento físico emitido por Club de Campo y Mar Isla La Porcada, S.A. bajo legislación panameña." data-en="Reference render of the numbered, nominative and non-transferable membership. Physical document issued by Club de Campo y Mar Isla La Porcada, S.A. under Panamanian law.">Render referencial de la membresía numerada, nominativa e intransferible. Documento físico emitido por Club de Campo y Mar Isla La Porcada, S.A. bajo legislación panameña.</span>
+      </div>
+    </div>
+
+    <h3 data-es="D. Liquidez: Sistema Exclusivo de Recompra Corporativa (Corporate Buyback)" data-en="D. Liquidity: Exclusive Corporate Buyback System">D. Liquidez: Sistema Exclusivo de Recompra Corporativa (Corporate Buyback)</h3>
+    <p data-es="<strong>Prohibición de Mercado Secundario Abierto:</strong> Queda prohibida la venta, cesión, gravamen o transferencia del título entre particulares para evitar especulación o brechas de seguridad." data-en="<strong>Prohibition of Open Secondary Market:</strong> The sale, assignment, encumbrance or transfer of the title between individuals is forbidden to prevent speculation or security breaches."><strong>Prohibición de Mercado Secundario Abierto:</strong> Queda prohibida la venta, cesión, gravamen o transferencia del título entre particulares para evitar especulación o brechas de seguridad.</p>
+    <p data-es="<strong>Procedimiento de Salida:</strong> El socio que desee desvincularse solicita la devolución del título a la compañía emisora tras un periodo de carencia (lock-up) de 36 a 60 meses." data-en="<strong>Exit Procedure:</strong> The member wishing to disengage requests the return of the title to the issuing company after a lock-up period of 36 to 60 months."><strong>Procedimiento de Salida:</strong> El socio que desee desvincularse solicita la devolución del título a la compañía emisora tras un periodo de carencia (lock-up) de 36 a 60 meses.</p>
+    <p data-es="<strong>Fórmula de Recompra:</strong> La emisora recompra el título bajo la fórmula estatutaria preestablecida (precio de emisión descontando una comisión administrativa de salida)." data-en="<strong>Buyback Formula:</strong> The issuer repurchases the title under the pre-established statutory formula (issuance price minus an administrative exit commission)."><strong>Fórmula de Recompra:</strong> La emisora recompra el título bajo la fórmula estatutaria preestablecida (precio de emisión descontando una comisión administrativa de salida).</p>
+    <p data-es="<strong>Reciclaje de Títulos:</strong> La emisora vuelve a poner el título a disposición exclusiva de la lista de espera gestionada por el canal institucional." data-en="<strong>Title Recycling:</strong> The issuer places the title again at the exclusive disposal of the waiting list managed by the institutional channel."><strong>Reciclaje de Títulos:</strong> La emisora vuelve a poner el título a disposición exclusiva de la lista de espera gestionada por el canal institucional.</p>
+
+    <div class="legal-box">
+      <span class="legal-tag" data-es="Cláusulas Estatutarias Recomendadas" data-en="Recommended Statutory Clauses">Cláusulas Estatutarias Recomendadas</span>
+      <h4 data-es="Cláusulas de Restricción a la Transferencia" data-en="Transfer Restriction Clauses">Cláusulas de Restricción a la Transferencia</h4>
+      <p data-es="Bajo el art. 28 de la Ley 32 de 1927, el pacto social puede establecer restricciones a la transferencia de acciones y derechos, válidas entre las partes mientras se inscriban en el Registro Público. Se recomienda incorporar al contrato de asociación onerosa las siguientes cláusulas:" data-en="Under art. 28 of Law 32 of 1927, the articles of association may establish restrictions on the transfer of shares and rights, valid between the parties as long as they are registered in the Public Registry. The following clauses are recommended for inclusion in the onerous association contract:">Bajo el art. 28 de la Ley 32 de 1927, el pacto social puede establecer restricciones a la transferencia de acciones y derechos, válidas entre las partes mientras se inscriban en el Registro Público. Se recomienda incorporar al contrato de asociación onerosa las siguientes cláusulas:</p>
+      <ul>
+        <li data-es="Cláusula de <strong>Right of First Refusal (ROFR)</strong> a favor de la emisora ante cualquier intención de cesión." data-en="Clause of <strong>Right of First Refusal (ROFR)</strong> in favor of the issuer against any intention of assignment.">Cláusula de <strong>Right of First Refusal (ROFR)</strong> a favor de la emisora ante cualquier intención de cesión.</li>
+        <li data-es="Cláusula de <strong>Lock-Up</strong> de 36 a 60 meses, durante los cuales no procede solicitud de recompra." data-en="Clause of <strong>Lock-Up</strong> of 36 to 60 months, during which no repurchase request proceeds.">Cláusula de <strong>Lock-Up</strong> de 36 a 60 meses, durante los cuales no procede solicitud de recompra.</li>
+        <li data-es="Cláusula de <strong>Buyback Obligatorio</strong>: la salida solo se ejecuta mediante recompra corporativa al precio estatutario." data-en="Clause of <strong>Mandatory Buyback</strong>: exit is executed only via corporate repurchase at the statutory price.">Cláusula de <strong>Buyback Obligatorio</strong>: la salida solo se ejecuta mediante recompra corporativa al precio estatutario.</li>
+        <li data-es="Cláusula de <strong>Veto Reputacional</strong>: el Comité de Admisión puede bloquear la reemisión del título reciclado a un nuevo postulante propuesto por el socio saliente." data-en="Clause of <strong>Reputational Veto</strong>: the Admissions Committee may block reissuance of the recycled title to a new applicant proposed by the departing member.">Cláusula de <strong>Veto Reputacional</strong>: el Comité de Admisión puede bloquear la reemisión del título reciclado a un nuevo postulante propuesto por el socio saliente.</li>
+        <li data-es="Cláusula de <strong>Comisión de Salida</strong> del 8% al 12% sobre el precio de emisión, deducida del reembolso." data-en="Clause of <strong>Exit Commission</strong> of 8% to 12% on the issuance price, deducted from the refund.">Cláusula de <strong>Comisión de Salida</strong> del 8% al 12% sobre el precio de emisión, deducida del reembolso.</li>
+        <li data-es="Cláusula de <strong>Resolución y Devolución</strong> por incumplimiento de las obligaciones del socio (impago de cuotas, conducta lesiva, sanciones internacionales)." data-en="Clause of <strong>Resolution and Refund</strong> for breach of member obligations (non-payment of dues, harmful conduct, international sanctions).">Cláusula de <strong>Resolución y Devolución</strong> por incumplimiento de las obligaciones del socio (impago de cuotas, conducta lesiva, sanciones internacionales).</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. CANAL BANCA PRIVADA ============ -->
+<section id="s3">
+  <div class="container">
+    <div class="section-eyebrow" data-es="Sección 03" data-en="Section 03">Sección 03</div>
+    <h2 class="section-title"><span class="num">03.</span><span data-es="Instrumentación del Canal de Banca Privada y Family Offices" data-en="Private Banking & Family Office Channel Structuring">Instrumentación del Canal de Banca Privada y Family Offices</span></h2>
+    <p class="section-lead" data-es="Para que la retribución de $50,000 USD por título (el 20% del valor total de la inscripción) cumpla con los estándares internacionales de compliance bancario y transparencia (normativas europeas tipo MiFID II y equivalentes en EE.UU. y Asia):" data-en="For the $50,000 USD per-title remuneration (20% of the total initiation value) to meet international banking compliance and transparency standards (European regulations such as MiFID II and equivalents in the U.S. and Asia):">Para que la retribución de $50,000 USD por título (el 20% del valor total de la inscripción) cumpla con los estándares internacionales de compliance bancario y transparencia (normativas europeas tipo MiFID II y equivalentes en EE.UU. y Asia):</p>
+
+    <div class="two-col">
+      <div class="card">
+        <h3 style="margin-top:0" data-es="Contrato Marco de Sourcing Institucional (FPA)" data-en="Institutional Sourcing Framework Agreement (FPA)">Contrato Marco de Sourcing Institucional (FPA)</h3>
+        <p data-es="Las entidades financieras o family offices no actúan como agencias inmobiliarias ni vendedores directos, sino bajo acuerdos de <strong>Asesoramiento y Selección de Inversores/Socios</strong> para el Cónclave Internacional." data-en="Financial institutions or family offices do not act as real estate agencies or direct sellers, but under <strong>Investor/Member Advisory and Selection</strong> agreements for the International Conclave.">Las entidades financieras o family offices no actúan como agencias inmobiliarias ni vendedores directos, sino bajo acuerdos de <strong>Asesoramiento y Selección de Inversores/Socios</strong> para el Cónclave Internacional.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0" data-es="Liquidación Condicionada al Compliance" data-en="Compliance-Conditioned Settlement">Liquidación Condicionada al Compliance</h3>
+        <p data-es="El honorario institucional de $50,000 USD se devenga e ingresa únicamente cuando el cliente presentado supera el background check y es admitido formalmente por el Comité de Admisión. Si el cliente es rechazado por motivos de seguridad o perfil, no hay operación ni retribución." data-en="The institutional fee of $50,000 USD is accrued and paid only when the introduced client passes the background check and is formally admitted by the Admissions Committee. If the client is rejected for security or profile reasons, there is no operation and no remuneration.">El honorario institucional de $50,000 USD se devenga e ingresa únicamente cuando el cliente presentado supera el background check y es admitido formalmente por el Comité de Admisión. Si el cliente es rechazado por motivos de seguridad o perfil, no hay operación ni retribución.</p>
+      </div>
+    </div>
+
+    <h3 data-es="Efecto Ancla (The Anchor Effect)" data-en="The Anchor Effect">Efecto Ancla (The Anchor Effect)</h3>
+    <p data-es="La red comercial dispondrá del argumento de que las <strong>5 Mansiones Insignia</strong> del proyecto ya han sido asignadas a los principales líderes globales del sector energético e hidrocarburos, contando con lista de espera activa. Esto genera una urgencia de captación (FOMO) inmediata en sus carteras." data-en="The commercial network will have the argument that the <strong>5 Signature Mansions</strong> of the project have already been assigned to the main global leaders of the energy and hydrocarbons sector, with an active waiting list. This generates immediate capture urgency (FOMO) in their portfolios.">La red comercial dispondrá del argumento de que las <strong>5 Mansiones Insignia</strong> del proyecto ya han sido asignadas a los principales líderes globales del sector energético e hidrocarburos, contando con lista de espera activa. Esto genera una urgencia de captación (FOMO) inmediata en sus carteras.</p>
+
+    <div class="legal-box">
+      <span class="legal-tag" data-es="Compliance Cross-Border" data-en="Cross-Border Compliance">Compliance Cross-Border</span>
+      <h4 data-es="Marco Regulatorio del Canal Institucional" data-en="Regulatory Framework of the Institutional Channel">Marco Regulatorio del Canal Institucional</h4>
+      <p data-es="El canal institucional queda sujeto a un triple cumplimiento normativo: (i) <strong>Ley 23 de 2015 y Decreto 52 de 2015 de Panamá</strong> — obligaciones AML/CFT para sujetos obligados panameños; (ii) <strong>MiFID II (Directiva 2014/65/UE)</strong> — para entidades europeas que introducen clientes a productos de inversión alternativos; (iii) <strong>SEC Rule 206(4)-7 y FINRA Rule 3110</strong> — supervisión de compliance para brokers estadounidenses; y (iv) <strong>SFC Code of Conduct (Hong Kong) y MAS Securities and Futures Act (Singapur)</strong> para la red asiática." data-en="The institutional channel is subject to triple regulatory compliance: (i) <strong>Law 23 of 2015 and Decree 52 of 2015 of Panama</strong> — AML/CFT obligations for Panamanian obligated subjects; (ii) <strong>MiFID II (Directive 2014/65/EU)</strong> — for European entities introducing clients to alternative investment products; (iii) <strong>SEC Rule 206(4)-7 and FINRA Rule 3110</strong> — compliance supervision for U.S. brokers; and (iv) <strong>SFC Code of Conduct (Hong Kong) and MAS Securities and Futures Act (Singapore)</strong> for the Asian network.">El canal institucional queda sujeto a un triple cumplimiento normativo: (i) <strong>Ley 23 de 2015 y Decreto 52 de 2015 de Panamá</strong> — obligaciones AML/CFT para sujetos obligados panameños; (ii) <strong>MiFID II (Directiva 2014/65/UE)</strong> — para entidades europeas que introducen clientes a productos de inversión alternativos; (iii) <strong>SEC Rule 206(4)-7 y FINRA Rule 3110</strong> — supervisión de compliance para brokers estadounidenses; y (iv) <strong>SFC Code of Conduct (Hong Kong) y MAS Securities and Futures Act (Singapur)</strong> para la red asiática.</p>
+      <p data-es="El <strong>Fee Protection Agreement (FPA)</strong> incluirá: identificación clara del mandatario, delimitación del territorio y producto, duración determinada (24 a 36 meses), cláusula de <strong>tail clause</strong> de 12 meses para clientes introducidos durante la vigencia, mecanismo de resolución de disputas mediante arbitraje internacional (Reglas UNCITRAL o CCI, sede Panamá o Miami), y declaración expresa de que la retribución no constituye comisión de venta de valores sino honorario por servicios de asesoramiento y selección." data-en="The <strong>Fee Protection Agreement (FPA)</strong> will include: clear identification of the mandatary, delimitation of territory and product, fixed duration (24 to 36 months), a 12-month <strong>tail clause</strong> for clients introduced during the term, dispute resolution mechanism via international arbitration (UNCITRAL or ICC Rules, venue Panama or Miami), and express declaration that the remuneration does not constitute securities sales commission but fee for advisory and selection services.">El <strong>Fee Protection Agreement (FPA)</strong> incluirá: identificación clara del mandatario, delimitación del territorio y producto, duración determinada (24 a 36 meses), cláusula de <strong>tail clause</strong> de 12 meses para clientes introducidos durante la vigencia, mecanismo de resolución de disputas mediante arbitraje internacional (Reglas UNCITRAL o CCI, sede Panamá o Miami), y declaración expresa de que la retribución no constituye comisión de venta de valores sino honorario por servicios de asesoramiento y selección.</p>
+      <p data-es="El pago del honorario se efectuará desde la cuenta del fideicomiso emisor a una cuenta del banquero o family office en una jurisdicción compatible con el <strong>Common Reporting Standard (CRS) de la OCDE</strong> y el <strong>FATCA</strong>, con retención y reporte automático según corresponda." data-en="Payment of the fee will be made from the issuing trust account to the banker's or family office's account in a jurisdiction compatible with the OECD <strong>Common Reporting Standard (CRS)</strong> and <strong>FATCA</strong>, with withholding and automatic reporting as applicable.">El pago del honorario se efectuará desde la cuenta del fideicomiso emisor a una cuenta del banquero o family office en una jurisdicción compatible con el <strong>Common Reporting Standard (CRS) de la OCDE</strong> y el <strong>FATCA</strong>, con retención y reporte automático según corresponda.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. CAPACIDAD Y MATRIZ ============ -->
+<section id="s4">
+  <div class="container">
+    <div class="section-eyebrow" data-es="Sección 04" data-en="Section 04">Sección 04</div>
+    <h2 class="section-title"><span class="num">04.</span><span data-es="Análisis de Capacidad y Matriz de Ocupación (5,000 Socios)" data-en="Capacity Analysis & Occupancy Matrix (5,000 Members)">Análisis de Capacidad y Matriz de Ocupación (5,000 Socios)</span></h2>
+
+    <h3 data-es="A. Capacidad Anual de Alojamiento (Paquete mínimo: 7 días)" data-en="A. Annual Accommodation Capacity (Minimum package: 7 days)">A. Capacidad Anual de Alojamiento (Paquete mínimo: 7 días)</h3>
+    <ul>
+      <li data-es="<strong>100 Suites Hotel AMAN:</strong> 5,200 semanas/año" data-en="<strong>100 AMAN Hotel Suites:</strong> 5,200 weeks/year"><strong>100 Suites Hotel AMAN:</strong> 5,200 semanas/año</li>
+      <li data-es="<strong>50 Villas Overwater:</strong> 2,600 semanas/año" data-en="<strong>50 Overwater Villas:</strong> 2,600 weeks/year"><strong>50 Villas Overwater:</strong> 2,600 semanas/año</li>
+      <li data-es="<strong>50 Villas en Playa / Condominios:</strong> 2,300 semanas/año (descontando las 6 semanas de uso exclusivo de los propietarios fundadores)" data-en="<strong>50 Beach Villas / Condominiums:</strong> 2,300 weeks/year (deducting the 6 weeks of exclusive use by the founding owners)"><strong>50 Villas en Playa / Condominios:</strong> 2,300 semanas/año (descontando las 6 semanas de uso exclusivo de los propietarios fundadores)</li>
+      <li data-es="<strong>Capacidad Máxima Total:</strong> 10,100 semanas-unidad al año." data-en="<strong>Total Maximum Capacity:</strong> 10,100 unit-weeks per year."><strong>Capacidad Máxima Total:</strong> 10,100 semanas-unidad al año.</li>
+    </ul>
+
+    <h3 data-es="B. Matriz de Ocupación por Perfil de Socio" data-en="B. Occupancy Matrix by Member Profile">B. Matriz de Ocupación por Perfil de Socio</h3>
+    <p data-es="Gracias a la presencia del <strong>Centro de Longevidad, Anti-Aging y Medicina Preventiva</strong> (con programas de tratamiento y postoperatorio discreto de 15 a 45 días), el consumo de estancias se desglosa así:" data-en="Thanks to the presence of the <strong>Longevity, Anti-Aging and Preventive Medicine Center</strong> (with treatment and discreet postoperative programs of 15 to 45 days), stay consumption is broken down as follows:">Gracias a la presencia del <strong>Centro de Longevidad, Anti-Aging y Medicina Preventiva</strong> (con programas de tratamiento y postoperatorio discreto de 15 a 45 días), el consumo de estancias se desglosa así:</p>
+
+    <div class="profile-bars">
+      <div class="profile-bar">
+        <div class="label" data-es="Socio Longevidad / Estética" data-en="Longevity / Aesthetics Member">Socio Longevidad / Estética</div>
+        <div class="bar"><div class="fill" style="width:35%"></div></div>
+        <div class="pct">35%</div>
+      </div>
+      <div class="profile-bar">
+        <div class="label" data-es="Socio Negocios / Conclave" data-en="Business / Conclave Member">Socio Negocios / Conclave</div>
+        <div class="bar"><div class="fill" style="width:45%"></div></div>
+        <div class="pct">45%</div>
+      </div>
+      <div class="profile-bar">
+        <div class="label" data-es="Socio Ocio / Relax" data-en="Leisure / Relax Member">Socio Ocio / Relax</div>
+        <div class="bar"><div class="fill" style="width:20%"></div></div>
+        <div class="pct">20%</div>
+      </div>
+    </div>
+
+    <div class="formula">
+      <span data-es="Promedio de Estancia Anual = (0.35 × 4) + (0.45 × 2) + (0.20 × 1) = 2.5 semanas/año por socio (≈ 18 días/año)" data-en="Average Annual Stay = (0.35 × 4) + (0.45 × 2) + (0.20 × 1) = 2.5 weeks/year per member (≈ 18 days/year)">Promedio de Estancia Anual = (0.35 × 4) + (0.45 × 2) + (0.20 × 1) = 2.5 semanas/año por socio (≈ 18 días/año)</span>
+    </div>
+
+    <h3 data-es="C. Garantía de Ocupación con el Cupo de 5,000 Miembros" data-en="C. Occupancy Guarantee with the 5,000 Member Cap">C. Garantía de Ocupación con el Cupo de 5,000 Miembros</h3>
+
+    <div class="formula">
+      <span data-es="Semanas Demandadas por 5,000 Socios = 5,000 socios × 2.05 semanas (promedio real) ≈ 10,250 semanas/año" data-en="Weeks Demanded by 5,000 Members = 5,000 members × 2.05 weeks (real average) ≈ 10,250 weeks/year">Semanas Demandadas por 5,000 Socios = 5,000 socios × 2.05 semanas (promedio real) ≈ 10,250 semanas/año</span>
+    </div>
+
+    <div class="callout" data-es="<strong>Conclusión de Ocupación:</strong> Colocando los 5,000 Títulos a $250,000 USD, la ocupación del resort queda agotada al 100% durante los 365 días del año, generando una permanente lista de espera internacional que revaloriza los títulos en poder de la compañía y eleva la demanda de recompra." data-en="<strong>Occupancy Conclusion:</strong> Placing the 5,000 Titles at $250,000 USD, the resort's occupancy is fully exhausted at 100% during the 365 days of the year, generating a permanent international waiting list that revalues the titles held by the company and elevates buyback demand."><strong>Conclusión de Ocupación:</strong> Colocando los 5,000 Títulos a $250,000 USD, la ocupación del resort queda agotada al 100% durante los 365 días del año, generando una permanente lista de espera internacional que revaloriza los títulos en poder de la compañía y eleva la demanda de recompra.</div>
+
+    <div class="img-block">
+      <img src="images/ECORESORT.PNG" alt="EcoResort La Porcada — Vista Render" onerror="this.parentNode.innerHTML='<div style=\'padding:80px 24px;text-align:center;color:var(--muted);font-family:Cormorant Garamond,serif;font-style:italic;font-size:18px\'>[ Imagen ECORESORT.PNG — Render del EcoResort ]</div>'">
+      <div class="img-caption">
+        <strong data-es="EcoResort La Porcada" data-en="EcoResort La Porcada">EcoResort La Porcada</strong>
+        <span data-es="Render institucional del complejo: 100 suites, 50 villas overwater y 50 villas/condominios en playa operados por AMAN Resorts. Capacidad máxima: 10,100 semanas-unidad/año." data-en="Institutional render of the complex: 100 suites, 50 overwater villas and 50 beach villas/condominiums operated by AMAN Resorts. Maximum capacity: 10,100 unit-weeks/year.">Render institucional del complejo: 100 suites, 50 villas overwater y 50 villas/condominios en playa operados por AMAN Resorts. Capacidad máxima: 10,100 semanas-unidad/año.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. CUADRO CONSOLIDADO ============ -->
+<section id="s5">
+  <div class="container">
+    <div class="section-eyebrow" data-es="Sección 05" data-en="Section 05">Sección 05</div>
+    <h2 class="section-title"><span class="num">05.</span><span data-es="Cuadro Consolidado de Viabilidad para Gerencia" data-en="Consolidated Feasibility Statement for Management">Cuadro Consolidado de Viabilidad para Gerencia</span></h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th data-es="Concepto" data-en="Concept">Concepto</th>
+            <th data-es="Detalle del Modelo Unificado" data-en="Unified Model Detail">Detalle del Modelo Unificado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong data-es="Cupo Máximo de Socios" data-en="Maximum Member Cap">Cupo Máximo de Socios</strong></td><td data-es="5,000 Títulos Executive (Cerrado por estatutos)" data-en="5,000 Executive Titles (Closed by statute)">5,000 Títulos Executive (Cerrado por estatutos)</td></tr>
+          <tr><td><strong data-es="Precio de Inscripción al Cliente" data-en="Client Initiation Price">Precio de Inscripción al Cliente</strong></td><td class="td-money">$250,000 USD <span data-es="(Pago único de entrada)" data-en="(One-time entry payment)">(Pago único de entrada)</span></td></tr>
+          <tr><td><strong data-es="Comisión / Fee para Banquero / FO" data-en="Banker / FO Commission / Fee">Comisión / Fee para Banquero / FO</strong></td><td class="td-money">$50,000 USD <span data-es="(Por socio admitido)" data-en="(Per admitted member)">(Por socio admitido)</span></td></tr>
+          <tr><td><strong data-es="Ingreso Neto Promotora p/ Título" data-en="Net Promoter Revenue per Title">Ingreso Neto Promotora p/ Título</strong></td><td class="td-money">$200,000 USD</td></tr>
+          <tr><td><strong data-es="CAJA INICIAL CAPTACIÓN (Fase 0)" data-en="INITIAL CASH RAISED (Phase 0)">CAJA INICIAL CAPTACIÓN (Fase 0)</strong></td><td class="td-money">$1,000,000,000 USD <span data-es="($1,000 M USD netos para la promotora)" data-en="($1,000 M USD net to the promoter)">($1,000 M USD netos para la promotora)</span></td></tr>
+          <tr><td><strong data-es="Cuota Anual de Mantenimiento" data-en="Annual Maintenance Dues">Cuota Anual de Mantenimiento</strong></td><td class="td-money">$50,000 USD/año <span data-es="por socio" data-en="per member">por socio</span></td></tr>
+          <tr><td><strong data-es="RECAUDACIÓN ANUAL RECURRENTE" data-en="ANNUAL RECURRING RAISE">RECAUDACIÓN ANUAL RECURRENTE</strong></td><td class="td-money">$250,000,000 USD/año <span data-es="($250 M USD/año para gastos operativos y seguridad)" data-en="($250 M USD/year for operating expenses and security)">($250 M USD/año para gastos operativos y seguridad)</span></td></tr>
+          <tr><td><strong data-es="Facturación de Estancias/Hotel" data-en="Stay/Hotel Billing">Facturación de Estancias/Hotel</strong></td><td data-es="100% Cobrada aparte (Tarifa diaria AMAN + tratamientos longevidad)" data-en="100% Billed separately (AMAN daily rate + longevity treatments)">100% Cobrada aparte (Tarifa diaria AMAN + tratamientos longevidad)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="two-col">
+      <div class="card">
+        <h3 style="margin-top:0" data-es="Equilibrio de Captación" data-en="Capture Balance">Equilibrio de Captación</h3>
+        <p data-es="5,000 títulos × $200,000 USD netos = <strong>$1,000 M USD</strong>. El CAPEX de desarrollo del proyecto asciende a <strong>$739.74 M USD</strong>, generando un excedente de caja de <strong>$260.26 M USD</strong> disponible desde la Fase 0 para reservas operativas, fondo de seguridad y contingencias." data-en="5,000 titles × $200,000 USD net = <strong>$1,000 M USD</strong>. The project's development CAPEX amounts to <strong>$739.74 M USD</strong>, generating a cash surplus of <strong>$260.26 M USD</strong> available from Phase 0 for operating reserves, security fund and contingencies.">5,000 títulos × $200,000 USD netos = <strong>$1,000 M USD</strong>. El CAPEX de desarrollo del proyecto asciende a <strong>$739.74 M USD</strong>, generando un excedente de caja de <strong>$260.26 M USD</strong> disponible desde la Fase 0 para reservas operativas, fondo de seguridad y contingencias.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0" data-es="Flujo Recurrente Anual" data-en="Annual Recurring Flow">Flujo Recurrente Anual</h3>
+        <p data-es="5,000 socios × $50,000 USD = <strong>$250 M USD/año</strong>. Este flujo cubre: seguridad de rango presidencial (≈ $40 M/año), mantenimiento insular y reposición de activos (≈ $90 M/año), operación hotelera base (≈ $80 M/año), y reserva fiduciaria para recompra de títulos y fondo de contingencia (≈ $40 M/año)." data-en="5,000 members × $50,000 USD = <strong>$250 M USD/year</strong>. This flow covers: presidential-grade security (≈ $40 M/year), island maintenance and asset replacement (≈ $90 M/year), base hotel operation (≈ $80 M/year), and fiduciary reserve for title buyback and contingency fund (≈ $40 M/year).">5,000 socios × $50,000 USD = <strong>$250 M USD/año</strong>. Este flujo cubre: seguridad de rango presidencial (≈ $40 M/año), mantenimiento insular y reposición de activos (≈ $90 M/año), operación hotelera base (≈ $80 M/año), y reserva fiduciaria para recompra de títulos y fondo de contingencia (≈ $40 M/año).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. MARCO LEGAL PANAMEÑO ============ -->
+<section id="s6">
+  <div class="container">
+    <div class="section-eyebrow" data-es="Sección 06" data-en="Section 06">Sección 06</div>
+    <h2 class="section-title"><span class="num">06.</span><span data-es="Marco Legal Panameño Aplicable" data-en="Panamanian Legal Framework">Marco Legal Panameño Aplicable</span></h2>
+    <p class="section-lead" data-es="Compendio normativo de la República de Panamá aplicable a la estructuración, emisión, comercialización y operación del Programa Unificado de Membresías." data-en="Normative compendium of the Republic of Panama applicable to the structuring, issuance, marketing and operation of the Unified Membership Program.">Compendio normativo de la República de Panamá aplicable a la estructuración, emisión, comercialización y operación del Programa Unificado de Membresías.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th data-es="Norma" data-en="Statute">Norma</th>
+            <th data-es="Materia" data-en="Subject Matter">Materia</th>
+            <th data-es="Aplicación al Programa" data-en="Application to the Program">Aplicación al Programa</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Ley 32 de 1927</strong></td>
+            <td data-es="Sociedades Anónimas" data-en="Corporations">Sociedades Anónimas</td>
+            <td data-es="Constitución de Club de Campo y Mar Isla La Porcada, S.A. como entidad emisora. Permite pacto social con restricciones a la transferencia de derechos (art. 28)." data-en="Constitution of Club de Campo y Mar Isla La Porcada, S.A. as issuing entity. Allows articles with restrictions on the transfer of rights (art. 28).">Constitución de Club de Campo y Mar Isla La Porcada, S.A. como entidad emisora. Permite pacto social con restricciones a la transferencia de derechos (art. 28).</td>
+          </tr>
+          <tr>
+            <td><strong>Ley 1 de 5 de enero de 1997</strong></td>
+            <td data-es="Fideicomisos" data-en="Trusts">Fideicomisos</td>
+            <td data-es="Fideicomiso de Administración e Inversión para recepción y gestión de los fondos recaudados. Segregación patrimonial (art. 11) e inembargabilidad por deudas del constituyente." data-en="Administration and Investment Trust for receipt and management of raised funds. Asset segregation (art. 11) and unattachability from constitutor's debts.">Fideicomiso de Administración e Inversión para recepción y gestión de los fondos recaudados. Segregación patrimonial (art. 11) e inembargabilidad por deudas del constituyente.</td>
+          </tr>
+          <tr>
+            <td><strong>Ley 23 de 27 de abril de 2015</strong></td>
+            <td data-es="Prevención de blanqueo de capitales y FT" data-en="AML/CFT prevention">Prevención de blanqueo de capitales y FT</td>
+            <td data-es="Obligaciones de Cliente Due Diligence (CDD), Enhanced Due Diligence (EDD) para PEP, designación de Oficial de Cumplimiento, Manual de Prevención y reporte de operaciones sospechosas a la UAF." data-en="Customer Due Diligence (CDD) obligations, Enhanced Due Diligence (EDD) for PEP, designation of Compliance Officer, Prevention Manual and reporting of suspicious operations to the UAF.">Obligaciones de Cliente Due Diligence (CDD), Enhanced Due Diligence (EDD) para PEP, designación de Oficial de Cumplimiento, Manual de Prevención y reporte de operaciones sospechosas a la UAF.</td>
+          </tr>
+          <tr>
+            <td><strong>Decreto Ejecutivo 52 de 2015</strong></td>
+            <td data-es="Reglamentación AML" data-en="AML regulation">Reglamentación AML</td>
+            <td data-es="Reglamenta la Ley 23: define sujetos obligados, umbrales, plazos de conservación de expedientes (10 años) y procedimientos de debida diligencia." data-en="Regulates Law 23: defines obligated subjects, thresholds, file retention periods (10 years) and due diligence procedures.">Reglamenta la Ley 23: define sujetos obligados, umbrales, plazos de conservación de expedientes (10 años) y procedimientos de debida diligencia.</td>
+          </tr>
+          <tr>
+            <td><strong>Ley 47 de 2013</strong></td>
+            <td data-es="Unidad de Análisis Financiero (UAF)" data-en="Financial Analysis Unit (UAF)">Unidad de Análisis Financiero (UAF)</td>
+            <td data-es="Crea la UAF receptora de los Reportes de Operaciones Sospechosas (ROS). Obligación de reportar operaciones atípicas superiores a umbrales legales." data-en="Creates the UAF recipient of Suspicious Operation Reports (SOR). Obligation to report atypical operations exceeding legal thresholds.">Crea la UAF receptora de los Reportes de Operaciones Sospechosas (ROS). Obligación de reportar operaciones atípicas superiores a umbrales legales.</td>
+          </tr>
+          <tr>
+            <td><strong>Decreto Ley 9 de 1998</strong></td>
+            <td data-es="Superintendencia de Bancos de Panamá (SBP)" data-en="Superintendence of Banks of Panama (SBP)">Superintendencia de Bancos de Panamá (SBP)</td>
+            <td data-es="Crea la SBP como ente regulador y supervisor de bancos y fiduciarias. Aplica cuando el fideicomiso es administrado por una fiduciaria autorizada." data-en="Creates the SBP as regulator and supervisor of banks and fiduciaries. Applies when the trust is administered by an authorized fiduciary.">Crea la SBP como ente regulador y supervisor de bancos y fiduciarias. Aplica cuando el fideicomiso es administrado por una fiduciaria autorizada.</td>
+          </tr>
+          <tr>
+            <td><strong>Acuerdos SBP 004-2008 y 020-2015</strong></td>
+            <td data-es="Normativa fiduciaria y AML bancario" data-en="Fiduciary and banking AML regulation">Normativa fiduciaria y AML bancario</td>
+            <td data-es="Reglas de operación fiduciaria, gobierno corporativo del fiduciario, prevención de uso indebido de servicios fiduciarios y bancarios." data-en="Rules on fiduciary operation, fiduciary corporate governance, prevention of misuse of fiduciary and banking services.">Reglas de operación fiduciaria, gobierno corporativo del fiduciario, prevención de uso indebido de servicios fiduciarios y bancarios.</td>
+          </tr>
+          <tr>
+            <td><strong>Ley 45 de 2007 (RUSF)</strong></td>
+            <td data-es="Régimen Único Sector Financiero" data-en="Single Financial Sector Regime">Régimen Único Sector Financiero</td>
+            <td data-es="Determina si la actividad del club califica como actividad financiera sujeta a regulación SBP o como actividad comercial exenta. El diseño contractual evita la captación pasiva del público." data-en="Determines whether the club's activity qualifies as financial activity subject to SBP regulation or as exempt commercial activity. The contractual design avoids passive public fundraising.">Determina si la actividad del club califica como actividad financiera sujeta a regulación SBP o como actividad comercial exenta. El diseño contractual evita la captación pasiva del público.</td>
+          </tr>
+          <tr>
+            <td><strong>Código de Comercio de Panamá</strong></td>
+            <td data-es="Actos de comercio y contratos" data-en="Commercial acts and contracts">Actos de comercio y contratos</td>
+            <td data-es="Calificación del contrato de asociación onerosa al club como contrato mercantil atípico, con plena libertad de pactos entre partes (art. 1 y 2)." data-en="Qualification of the onerous association contract as an atypical commercial contract, with full freedom of pacts between parties (art. 1 and 2).">Calificación del contrato de asociación onerosa al club como contrato mercantil atípico, con plena libertad de pactos entre partes (art. 1 y 2).</td>
+          </tr>
+          <tr>
+            <td><strong>Ley 51 de 2003 (RPI)</strong></td>
+            <td data-es="Registro Público — Propiedad Inmobiliaria" data-en="Public Registry — Real Estate">Registro Público — Propiedad Inmobiliaria</td>
+            <td data-es="Inscripción de la propiedad del suelo y gravámenes. La isla mantiene titularidad independiente de la S.A. emisora y del fideicomiso." data-en="Registration of land ownership and encumbrances. The island maintains ownership independent of the issuing corporation and the trust.">Inscripción de la propiedad del suelo y gravámenes. La isla mantiene titularidad independiente de la S.A. emisora y del fideicomiso.</td>
+          </tr>
+          <tr>
+            <td><strong>Ley 80 de 2009 (Turismo)</strong></td>
+            <td data-es="Incentivos turísticos" data-en="Tourism incentives">Incentivos turísticos</td>
+            <td data-es="Posibles incentivos fiscales aplicables al desarrollo hotelero AMAN en zona declarada de interés turístico, previa certificación de la ATP." data-en="Possible tax incentives applicable to AMAN hotel development in an area declared of tourism interest, subject to ATP certification.">Posibles incentivos fiscales aplicables al desarrollo hotelero AMAN en zona declarada de interés turístico, previa certificación de la ATP.</td>
+          </tr>
+          <tr>
+            <td><strong>CRS (OCDE) y FATCA (EE.UU.)</strong></td>
+            <td data-es="Intercambio automático de información fiscal" data-en="Automatic exchange of tax information">Intercambio automático de información fiscal</td>
+            <td data-es="Reporte automático a autoridades fiscales del país de residencia del socio. El contrato de asociación informará al socio de esta obligación." data-en="Automatic reporting to tax authorities of the member's country of residence. The association contract will inform the member of this obligation.">Reporte automático a autoridades fiscales del país de residencia del socio. El contrato de asociación informará al socio de esta obligación.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="legal-box">
+      <span class="legal-tag" data-es="Consideraciones Fiscales" data-en="Tax Considerations">Consideraciones Fiscales</span>
+      <h4 data-es="Régimen Tributario Aplicable a la Emisora" data-en="Tax Regime Applicable to the Issuer">Régimen Tributario Aplicable a la Emisora</h4>
+      <p data-es="Panamá opera bajo el principio de <strong>territorialidad fiscal</strong>: solo tributan las rentas generadas dentro del territorio panameño. La emisión y comercialización internacional de títulos, administrada desde Panamá pero captada en el exterior, puede estructurarse como <strong>renta de fuente extranjera</strong> exenta del Impuesto sobre la Renta (art. 694 del Código Fiscal). Sin embargo, los servicios prestados físicamente en la isla (estancias, gastronomía, tratamientos) sí constituyen renta de fuente panameña y se gravan al 25% (tasa corporativa general)." data-en="Panama operates under the principle of <strong>tax territoriality</strong>: only income generated within Panamanian territory is taxed. The international issuance and marketing of titles, administered from Panama but raised abroad, may be structured as <strong>foreign-source income</strong> exempt from Income Tax (art. 694 of the Fiscal Code). However, services physically rendered on the island (stays, gastronomy, treatments) do constitute Panamanian-source income and are taxed at 25% (general corporate rate).">Panamá opera bajo el principio de <strong>territorialidad fiscal</strong>: solo tributan las rentas generadas dentro del territorio panameño. La emisión y comercialización internacional de títulos, administrada desde Panamá pero captada en el exterior, puede estructurarse como <strong>renta de fuente extranjera</strong> exenta del Impuesto sobre la Renta (art. 694 del Código Fiscal). Sin embargo, los servicios prestados físicamente en la isla (estancias, gastronomía, tratamientos) sí constituyen renta de fuente panameña y se gravan al 25% (tasa corporativa general).</p>
+      <p data-es="La ITBMS (Impuesto a la Transferencia de Bienes Muebles Corporificados y Prestación de Servicios) se aplica al 7% sobre los consumos hoteleros y servicios prestados en isla. La cuota anual de mantenimiento podría calificar como servicio exento si se estructura como contraprestación por derechos de asociación, sujeto a análisis técnico de la Dirección General de Ingresos (DGI)." data-en="The ITBMS (Tax on the Transfer of Tangible Goods and Provision of Services) applies at 7% on hotel consumption and services rendered on the island. The annual maintenance fee could qualify as an exempt service if structured as consideration for association rights, subject to technical analysis by the General Directorate of Revenue (DGI).">La ITBMS (Impuesto a la Transferencia de Bienes Muebles Corporificados y Prestación de Servicios) se aplica al 7% sobre los consumos hoteleros y servicios prestados en isla. La cuota anual de mantenimiento podría calificar como servicio exento si se estructura como contraprestación por derechos de asociación, sujeto a análisis técnico de la Dirección General de Ingresos (DGI).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. CONCLUSIÓN ============ -->
+<section id="s7">
+  <div class="container">
+    <div class="section-eyebrow" data-es="Sección 07" data-en="Section 07">Sección 07</div>
+    <h2 class="section-title"><span class="num">07.</span><span data-es="Conclusión y Próximos Pasos" data-en="Conclusion & Next Steps">Conclusión y Próximos Pasos</span></h2>
+
+    <p class="lead-para" data-es="Este modelo unificado de 5,000 miembros a $250,000 USD articula cuatro objetivos estratégicos simultáneamente:" data-en="This unified model of 5,000 members at $250,000 USD articulates four strategic objectives simultaneously:">Este modelo unificado de 5,000 miembros a $250,000 USD articula cuatro objetivos estratégicos simultáneamente:</p>
+
+    <div class="two-col">
+      <div class="card">
+        <h3 style="margin-top:0;color:var(--gold-bright)" data-es="1. Financiación del CAPEX" data-en="1. CAPEX Financing">1. Financiación del CAPEX</h3>
+        <p data-es="Financia el 100% del CAPEX del proyecto ($739.74 M USD) dejando <strong>$260 M USD</strong> de reserva en caja desde la Fase 0." data-en="Finances 100% of the project's CAPEX ($739.74 M USD) leaving <strong>$260 M USD</strong> cash reserve from Phase 0.">Financia el 100% del CAPEX del proyecto ($739.74 M USD) dejando <strong>$260 M USD</strong> de reserva en caja desde la Fase 0.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0;color:var(--gold-bright)" data-es="2. Recurrencia Operativa" data-en="2. Operating Recurrence">2. Recurrencia Operativa</h3>
+        <p data-es="Genera <strong>$250 M USD anuales</strong> recurrentes solo en cuotas de mantenimiento para sostener la infraestructura insular y la seguridad de rango presidencial." data-en="Generates <strong>$250 M USD annually</strong> recurring in maintenance dues alone to sustain island infrastructure and presidential-grade security.">Genera <strong>$250 M USD anuales</strong> recurrentes solo en cuotas de mantenimiento para sostener la infraestructura insular y la seguridad de rango presidencial.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0;color:var(--gold-bright)" data-es="3. Incentivo del Canal" data-en="3. Channel Incentive">3. Incentivo del Canal</h3>
+        <p data-es="Mantiene la agilidad del canal de venta, ofreciendo al banquero privado un incentivo extraordinario de <strong>$50,000 USD</strong> limpios por cada magnate o family office que introduzca en el cónclave." data-en="Maintains sales channel agility, offering the private banker an extraordinary incentive of <strong>$50,000 USD</strong> net per magnate or family office introduced into the conclave.">Mantiene la agilidad del canal de venta, ofreciendo al banquero privado un incentivo extraordinario de <strong>$50,000 USD</strong> limpios por cada magnate o family office que introduzca en el cónclave.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0;color:var(--gold-bright)" data-es="4. Exclusividad Permanente" data-en="4. Permanent Exclusivity">4. Exclusividad Permanente</h3>
+        <p data-es="Blinda el carácter exclusivo del resort, evitando cualquier masificación y asegurando la <strong>ocupación total los 365 días</strong> del año." data-en="Shields the resort's exclusive character, preventing any massification and ensuring <strong>full occupancy 365 days</strong> a year.">Blinda el carácter exclusivo del resort, evitando cualquier masificación y asegurando la <strong>ocupación total los 365 días</strong> del año.</p>
+      </div>
+    </div>
+
+    <h3 data-es="Próximos Pasos Recomendados" data-en="Recommended Next Steps">Próximos Pasos Recomendados</h3>
+    <ol>
+      <li data-es="<strong>Aprobación del Consejo de Administración</strong> al modelo unificado en su sesión de diciembre de 2026." data-en="<strong>Board of Directors' approval</strong> of the unified model at its December 2026 session."><strong>Aprobación del Consejo de Administración</strong> al modelo unificado en su sesión de diciembre de 2026.</li>
+      <li data-es="Constitución notarial de <strong>Club de Campo y Mar Isla La Porcada, S.A.</strong> ante notaría pública panameña y posterior inscripción en el Registro Público." data-en="Notarial constitution of <strong>Club de Campo y Mar Isla La Porcada, S.A.</strong> before a Panamanian public notary and subsequent registration in the Public Registry.">Constitución notarial de <strong>Club de Campo y Mar Isla La Porcada, S.A.</strong> ante notaría pública panameña y posterior inscripción en el Registro Público.</li>
+      <li data-es="Redacción y revisión del <strong>Contrato de Asociación Onerosa a Club Privado</strong>, los estatutos sociales y el reglamento del Comité de Admisión." data-en="Drafting and review of the <strong>Contract of Onerous Association to Private Club</strong>, the corporate bylaws and the Admissions Committee regulations.">Redacción y revisión del <strong>Contrato de Asociación Onerosa a Club Privado</strong>, los estatutos sociales y el reglamento del Comité de Admisión.</li>
+      <li data-es="Constitución del <strong>Fideicomiso de Administración e Inversión</strong> ante fiduciaria autorizada por la SBP, con designación de fiduciario profesional y comité fiduciario." data-en="Constitution of the <strong>Administration and Investment Trust</strong> before a fiduciary authorized by the SBP, with designation of professional fiduciary and fiduciary committee.">Constitución del <strong>Fideicomiso de Administración e Inversión</strong> ante fiduciaria autorizada por la SBP, con designación de fiduciario profesional y comité fiduciario.</li>
+      <li data-es="Designación del <strong>Oficial de Cumplimiento</strong>, elaboración del Manual de Prevención AML/CFT y registro ante la UAF." data-en="Designation of the <strong>Compliance Officer</strong>, preparation of the AML/CFT Prevention Manual and registration with the UAF.">Designación del <strong>Oficial de Cumplimiento</strong>, elaboración del Manual de Prevención AML/CFT y registro ante la UAF.</li>
+      <li data-es="Firma de los <strong>Fee Protection Agreements (FPA)</strong> con un mínimo de 5 family offices ancla y 3 bancos privados en jurisdicciones estratégicas." data-en="Signing of <strong>Fee Protection Agreements (FPA)</strong> with a minimum of 5 anchor family offices and 3 private banks in strategic jurisdictions.">Firma de los <strong>Fee Protection Agreements (FPA)</strong> con un mínimo de 5 family offices ancla y 3 bancos privados en jurisdicciones estratégicas.</li>
+      <li data-es="Contratación de la <strong>firma global de seguridad y background check</strong> para el pilotaje de los primeros 100 candidatos." data-en="Hiring of the <strong>global security and background check firm</strong> for the piloting of the first 100 candidates.">Contratación de la <strong>firma global de seguridad y background check</strong> para el pilotaje de los primeros 100 candidatos.</li>
+      <li data-es="Inicio formal de la <strong>Fase 0 de Captación</strong> en el primer trimestre de 2027, con meta mínima de 500 títulos colocados en los primeros 90 días." data-en="Formal start of <strong>Phase 0 Capture</strong> in the first quarter of 2027, with a minimum target of 500 titles placed in the first 90 days.">Inicio formal de la <strong>Fase 0 de Captación</strong> en el primer trimestre de 2027, con meta mínima de 500 títulos colocados en los primeros 90 días.</li>
+    </ol>
+
+    <div class="callout" data-es="<strong>Recomendación final:</strong> el éxito del programa depende de mantener la disciplina del cupo cerrado de 5,000 títulos, la intransigencia del filtro de admisión y la segregación absoluta entre el derecho de acceso (cubierto por la membresía) y los consumos operativos (facturados por AMAN). Cualquier concesión en estos tres pilares compromete la sostenibilidad del modelo." data-en="<strong>Final recommendation:</strong> the program's success depends on maintaining the discipline of the closed cap of 5,000 titles, the intransigence of the admission filter and the absolute segregation between access rights (covered by membership) and operational consumption (billed by AMAN). Any concession on these three pillars compromises the model's sustainability."><strong>Recomendación final:</strong> el éxito del programa depende de mantener la disciplina del cupo cerrado de 5,000 títulos, la intransigencia del filtro de admisión y la segregación absoluta entre el derecho de acceso (cubierto por la membresía) y los consumos operativos (facturados por AMAN). Cualquier concesión en estos tres pilares compromete la sostenibilidad del modelo.</div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <img src="images/LOGO.PNG" alt="La Porcada — Logo" class="footer-logo" onerror="this.style.display='none'">
+  <div class="footer-brand">EcoResort La Porcada</div>
+  <p class="footer-copy">
+    Copyright &copy; 2026 EcoResort La Porcada<br>
+    <strong>by TAKYMA INVESTMENT PIONEER</strong><br><br>
+    <span data-es="Memorándum Jurídico-Estructural — Documento Confidencial. Información dirigida exclusivamente al Consejo de Administración y Gerencia General. La distribución, copia o reproducción total o parcial requiere autorización expresa de la Dirección Estratégica y Jurídica de Isla La Porcada. Estructurado bajo la legislación de la República de Panamá." data-en="Legal & Structural Memorandum — Confidential Document. Information addressed exclusively to the Board of Directors and General Management. Total or partial distribution, copying or reproduction requires express authorization from the Strategic and Legal Office of Isla La Porcada. Structured under the legislation of the Republic of Panama.">Memorándum Jurídico-Estructural — Documento Confidencial. Información dirigida exclusivamente al Consejo de Administración y Gerencia General. La distribución, copia o reproducción total o parcial requiere autorización expresa de la Dirección Estratégica y Jurídica de Isla La Porcada. Estructurado bajo la legislación de la República de Panamá.</span>
+  </p>
+</footer>
+
+<script>
+function setLang(lang){
+  document.querySelectorAll('[data-es]').forEach(function(el){
+    var txt = (lang==='en') ? el.getAttribute('data-en') : el.getAttribute('data-es');
+    if(txt){
+      // Allow inline HTML in data attributes (encoded)
+      el.innerHTML = txt;
+    }
+  });
+  document.getElementById('btn-es').classList.toggle('active', lang==='es');
+  document.getElementById('btn-en').classList.toggle('active', lang==='en');
+  document.documentElement.lang = lang;
+  try{ localStorage.setItem('lang-porcada', lang); }catch(e){}
+}
+// Initial: default Spanish already rendered; restore saved pref if any
+(function(){
+  var saved = null;
+  try{ saved = localStorage.getItem('lang-porcada'); }catch(e){}
+  if(saved && saved==='en'){ setLang('en'); }
+})();
+</script>
+</body>
+</html>
